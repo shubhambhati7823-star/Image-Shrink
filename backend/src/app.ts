@@ -6,9 +6,15 @@ import compressRouter from "./routes/compress.routes.js";
 
 const app = express();
 
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://image-shrink-chi.vercel.app",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: allowedOrigins,
     exposedHeaders: [
       "X-Original-Size",
       "X-Compressed-Size",
@@ -16,6 +22,7 @@ app.use(
     ],
   })
 );
+
 
 app.use(express.json());
 
